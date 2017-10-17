@@ -22,6 +22,7 @@ namespace ServiceDesk
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSignalR();
             services.AddMvc();
         }
 
@@ -42,6 +43,11 @@ namespace ServiceDesk
             }
 
             app.UseStaticFiles();
+
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<SignalRHubs.LoopyHub>("loopy");
+            });
 
             app.UseMvc(routes =>
             {
