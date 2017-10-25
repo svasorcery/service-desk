@@ -12,6 +12,9 @@ const treeShakableModules = [
     '@angular/platform-browser',
     '@angular/platform-browser-dynamic',
     '@angular/router',
+    '@ngrx/effects',
+    '@ngrx/store',
+    '@ngrx/store-devtools',
     'zone.js',
 ];
 const nonTreeShakableModules = [

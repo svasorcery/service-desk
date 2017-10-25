@@ -46,7 +46,8 @@ namespace ServiceDesk
 
             app.UseSignalR(routes =>
             {
-                routes.MapHub<SignalRHubs.LoopyHub>("loopy");
+                routes.MapHub<Hubs.LoopyHub>("loopy");
+                routes.MapHub<Hubs.ServiceRequestHub>("requests");
             });
 
             app.UseMvc(routes =>
