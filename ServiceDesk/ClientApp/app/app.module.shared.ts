@@ -5,23 +5,20 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './components/app/app.component';
+import { AppRoutingModule } from './app.routing';
 import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        HomeComponent
-    ],
     imports: [
         CommonModule,
         HttpModule,
         FormsModule,
-        RouterModule.forRoot([
-            { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: 'home', component: HomeComponent },
-            { path: '**', redirectTo: 'home' }
-        ])
-    ]
+        AppRoutingModule,
+    ],
+    declarations: [
+        AppComponent,
+        HomeComponent
+    ],
 })
 export class AppModuleShared {
 }
