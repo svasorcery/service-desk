@@ -1,0 +1,65 @@
+<div class="container-fluid">
+
+    <h1>Send new service requests</h1>
+
+    <div class="row">
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="header">Group</label>
+                <input type="text" class="form-control" id="header" placeholder="your header..." name="header" [(ngModel)]="group" required>
+            </div>
+            <button class="btn btn-primary" (click)="join()">Join</button>
+            <button class="btn btn-primary" (click)="leave()">Leave</button>
+        </form>
+    </div>
+    <hr />
+    <div class="row">
+        <form class="form" (ngSubmit)="sendServiceRequest()" #form="ngForm">
+            <div class="form-group">
+                <label for="header">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Name" name="name" [(ngModel)]="serviceRequest.name"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="newsText">Description</label>
+                <input type="text" class="form-control" id="description" placeholder="Description" name="description" [(ngModel)]="serviceRequest.description"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="newsText">Author</label>
+                <input type="text" class="form-control" id="author" placeholder="Author" name="author" [(ngModel)]="serviceRequest.author"
+                    required>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Send Service request to: {{group}}</button>
+        </form>
+    </div>
+
+    <div class="row" *ngIf="(serviceRequestState$|async)?.serviceRequests.length > 0">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Author</th>
+                        <th>Group</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let sr of (serviceRequestState$|async)?.serviceRequests; let i = index">
+                        <td>{{i + 1}}</td>
+                        <td>{{sr.name}}</td>
+                        <td>{{sr.description}}</td>
+                        <td>{{sr.author}}</td>
+                        <td>{{sr.category}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="(serviceRequestState$|async)?.length <= 0">
+        <span>No service request items</span>
+    </div>
+</div>

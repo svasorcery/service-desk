@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 
 import { ServiceRequestRoutingModule, serviceRequestComponents } from './service-request.routing';
+import { ServiceRequestService } from './service-request.service';
 import { serviceRequestReducer } from './store/service-request.reducer';
 
 @NgModule({
@@ -19,6 +20,7 @@ import { serviceRequestReducer } from './store/service-request.reducer';
         ...serviceRequestComponents
     ],
     providers: [
+        ServiceRequestService
     ],
     exports: [
         
