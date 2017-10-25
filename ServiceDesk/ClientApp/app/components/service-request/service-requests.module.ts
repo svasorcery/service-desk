@@ -4,12 +4,16 @@ import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 
 import { ServiceRequestRoutingModule, serviceRequestComponents } from './service-request.routing';
+import { serviceRequestReducer } from './store/service-request.reducer';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         ServiceRequestRoutingModule,
+        StoreModule.forFeature('serviceDesk', {
+            serviceRequests: serviceRequestReducer,
+        }),
     ],
     declarations: [
         ...serviceRequestComponents
