@@ -9,12 +9,14 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppComponent } from './components/app/app.component';
 import { AppRoutingModule } from './app.routing';
 import { HomeComponent } from './components/home/home.component';
+import { ServiceRequestModule } from './components/service-request/service-requests.module';
 
 @NgModule({
     imports: [
         CommonModule,
         HttpModule,
         FormsModule,
+        ServiceRequestModule,
         AppRoutingModule,
         StoreModule.forRoot({}),
         StoreDevtoolsModule.instrument({
